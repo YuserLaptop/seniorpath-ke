@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SeniorPath KE – CBC School Finder</title>
+
+<style>
+body { font-family: Arial, sans-serif; background:#eef2f6; margin:0; }
+header { background:#0a6ebd; color:white; padding:20px; text-align:center; }
+.container { max-width:900px; margin:auto; padding:20px; }
+.card { background:white; padding:20px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+
+select, button { width:100%; padding:12px; margin-top:8px; border-radius:6px; border:1px solid #ccc; }
+button { background:#0a6ebd; color:white; border:none; font-size:16px; cursor:pointer; }
+button:hover { background:#095a99; }
+
+.school { border-bottom:1px solid #ddd; padding:15px 0; }
+.school:last-child { border-bottom:none; }
+.school h3 { margin:0; color:#0a6ebd; }
+
+.links a { display:inline-block; margin-right:10px; color:#0a6ebd; text-decoration:none; font-weight:bold; }
+
+footer { background:#ddd; text-align:center; padding:15px; margin-top:30px; }
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>SeniorPath KE</h1>
+<p>CBC School Finder for Senior School Placement (Prototype)</p>
+</header>
+
+<div class="container">
+<div class="card">
+
+<h2>Find Suitable Senior Schools</h2>
+
+<label>Performance Level</label>
+<select id="level">
+<option value="">Any</option>
+<option value="high">High (Top Grades)</option>
+<option value="medium">Medium (Average Grades)</option>
+<option value="low">Low (Lower Grades)</option>
+</select>
+
+<label>Study Pathway</label>
+<select id="pathway">
+<option value="">Any</option>
+<option value="stem">STEM</option>
+<option value="arts">Arts & Sports Science</option>
+<option value="social">Social Sciences</option>
+</select>
+
+<label>County</label>
+<select id="county">
+<option value="">Any</option>
+<option value="kiambu">Kiambu</option>
+<option value="nairobi">Nairobi</option>
+<option value="nakuru">Nakuru</option>
+<option value="nyeri">Nyeri</option>
+</select>
+
+<label>School Type</label>
+<select id="type">
+<option value="">Any</option>
+<option value="boarding">Boarding</option>
+<option value="day">Day</option>
+</select>
+
+<button onclick="findSchools()">Find Schools</button>
+
+<div id="results" style="margin-top:25px;"></div>
+
+</div>
+</div>
+
+<footer>
+&copy; 2026 SeniorPath KE – CBC School Finder (SEF Prototype)
+</footer>
+
+<script>
+var schools = [
+ {name:"Alliance High School", county:"kiambu", type:"boarding", level:"high", pathway:"stem", website:"https://www.alliancehighschool.sc.ke", maps:"https://www.google.com/maps/search/Alliance+High+School"},
+ {name:"Mang'u High School", county:"kiambu", type:"boarding", level:"high", pathway:"stem", website:"https://manguschools.sc.ke", maps:"https://www.google.com/maps/search/Mangu+High+School"},
+ {name:"Nairobi School", county:"nairobi", type:"boarding", level:"high", pathway:"social", website:"https://nairobischool.sc.ke", maps:"https://www.google.com/maps/search/Nairobi+School"},
+ {name:"Precious Blood Riruta", county:"nairobi", type:"boarding", level:"medium", pathway:"arts", website:"https://preciousbloodriruta.sc.ke", maps:"https://www.google.com/maps/search/Precious+Blood+Riruta"},
+ {name:"Kiambu High School", county:"kiambu", type:"boarding", level:"medium", pathway:"social", website:"https://kiambuhighschool.sc.ke", maps:"https://www.google.com/maps/search/Kiambu+High+School"},
+ {name:"Riabai Secondary School", county:"kiambu", type:"day", level:"medium", pathway:"arts", website:"#", maps:"https://www.google.com/maps/search/Riabai+Secondary+School"},
+ {name:"Nakuru High School", county:"nakuru", type:"boarding", level:"high", pathway:"stem", website:"https://nakuruhigh.sc.ke", maps:"https://www.google.com/maps/search/Nakuru+High+School"},
+ {name:"Nyeri High School", county:"nyeri", type:"boarding", level:"medium", pathway:"social", website:"https://nyerihighschool.sc.ke", maps:"https://www.google.com/maps/search/Nyeri+High+School"},
+ {name:"Dagoretti Mixed", county:"nairobi", type:"day", level:"low", pathway:"arts", website:"#", maps:"https://www.google.com/maps/search/Dagoretti+Mixed+Secondary+School"}
+];
+
+function findSchools() {
+ var level = document.getElementById("level").value;
+ var pathway = document.getElementById("pathway").value;
+ var county = document.getElementById("county").value;
+ var type = document.getElementById("type").value;
+
+ var results = document.getElementById("results");
+ var output = "<h2>Matching Schools</h2>";
+ var found = false;
+
+ for (var i = 0; i < schools.length; i++) {
+   var s = schools[i];
+
+   if ((level=="" || s.level==level) &&
+       (pathway=="" || s.pathway==pathway) &&
+       (county=="" || s.county==county) &&
+       (type=="" || s.type==type)) {
+
+     output += "<div class='school'>";
+     output += "<h3>" + s.name + "</h3>";
+     output += "County: " + s.county + "<br>";
+     output += "Type: " + s.type + "<br>";
+     output += "Pathway: " + s.pathway.toUpperCase() + "<br>";
+     output += "Performance Level: " + s.level.toUpperCase() + "<br><br>";
+     output += "<div class='links'>";
+     output += "<a href='" + s.website + "' target='_blank'>Official Website</a>";
+     output += "<a href='" + s.maps + "' target='_blank'>View on Google Maps</a>";
+     output += "</div>";
+     output += "</div>";
+
+     found = true;
+   }
+ }
+
+ if (!found) {
+   output += "<p>No matching schools found.</p>";
+ }
+
+ results.innerHTML = output;
+}
+</script>
+
+</body>
+</html>
