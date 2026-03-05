@@ -78,3 +78,24 @@ font-size:14px;
 .details.show{
 display:block;
 }
+.high { border-left:5px solid #00ff88; }
+.upper { border-left:5px solid #4da6ff; }
+.mid { border-left:5px solid #ffcc00; }
+.accessible { border-left:5px solid #ff6b6b; }
+
+.tier-label{
+    font-size:12px;
+    padding:4px 8px;
+    border-radius:5px;
+    background:#333;
+    display:inline-block;
+    margin-bottom:5px;
+}
+
+.controls button{
+    background:#222;
+}
+
+.controls button:hover{
+    background:#e50914;
+}
