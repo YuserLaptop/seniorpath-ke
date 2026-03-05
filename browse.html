@@ -12,7 +12,15 @@
 <a href="index.html">Home</a>
 </nav>
 </header>
+  
+<div class="controls">
+    <button onclick="filterByPathway('All')">All</button>
+    <button onclick="filterByPathway('STEM')">STEM</button>
+    <button onclick="filterByPathway('Social Sciences')">Social Sciences</button>
+    <button onclick="filterByPathway('Arts & Sports')">Arts & Sports</button>
+</div>
 
+<h3 id="schoolCount"></h3>
 <div id="schoolList" class="grid"></div>
 
 <script src="js/script.js"></script>
