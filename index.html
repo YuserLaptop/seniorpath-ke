@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+<title>SeniorPath KE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+<h1>SeniorPath KE</h1>
+<p>CBC Senior School Finder</p>
+</div>
+
+<div class="searchBox">
+
+<label>Enter KCPE Marks</label>
+<input id="marks" type="number" placeholder="0 - 500">
+
+<label>Pathway</label>
+<select id="pathway">
+<option value="any">Any</option>
+<option value="STEM">STEM</option>
+<option value="Social">Social Sciences</option>
+<option value="Arts">Arts & Sports</option>
+</select>
+
+<label>School Type</label>
+<select id="type">
+<option value="any">Any</option>
+<option value="Boarding">Boarding</option>
+<option value="Day">Day</option>
+</select>
+
+<label>County</label>
+<input id="county" placeholder="Example: Nairobi">
+
+<button onclick="searchSchools()">Find Schools</button>
+
+</div>
+
+<h2 class="resultsTitle">Matching Schools</h2>
+
+<div id="results"></div>
+
+<script src="schools.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
