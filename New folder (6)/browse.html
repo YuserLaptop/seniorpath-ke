@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Browse Schools</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dark">
+
+<header>
+<h1>Browse Kenyan Schools</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="browse.html">Browse</a>
+<a href="recommend.html">Recommend</a>
+</nav>
+
+</header>
+
+<div class="controls">
+
+<input type="text" id="search" placeholder="Search school name">
+
+<select id="countyFilter">
+<option value="">All Counties</option>
+</select>
+
+<select id="typeFilter">
+<option value="">All Types</option>
+<option>National</option>
+<option>Extra County</option>
+<option>County</option>
+</select>
+
+</div>
+
+<div id="schoolList" class="grid"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
